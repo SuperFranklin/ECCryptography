@@ -2,7 +2,7 @@ import random
 from random import randint
 from Curve import generate
 
-
+#is prime test
 def miller_rabin(n, k):
     if n == 2:
         return True
@@ -40,6 +40,7 @@ def testEuler(y, p, modulo):
     fp = pow(y,((p-1)//2), modulo)
     if(fp == 1):
         return True
+    print("y= ",y , "is not a square modulo rest")
     return False
 
 print("generating prime number...")

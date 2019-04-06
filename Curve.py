@@ -19,7 +19,7 @@ class Curve:
         return pow(x, 3, self.modulo) + (self.A * x) + self.B
 
     def __str__(self):
-        return "y^2 = x^3 + {}x + {}B   modulo={}".format(self.A, self.B, self.modulo)
+        return "y^2 = x^3 + {}x + {}   modulo={}".format(self.A, self.B, self.modulo)
 
 
 def generate(p):
@@ -30,7 +30,11 @@ def generate(p):
         a = randint(1,10)
         b = randint(1,10)
         delta = (4*(a^3)) + (27*(b^2))
+        print("delta= ", delta)
         if (delta % p !=0):
+            print("Correct curve found")
             isCorrect = True
+        else:
+            print("Incorrect curve")
     return Curve(a,b,p)
 
