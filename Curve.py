@@ -10,7 +10,7 @@ class Curve:
         self.modulo = modulo
 
     def isCorrect(self):
-        delta = (4*(self.A^3)) + (27*(self.B^2))
+        delta = (4*(self.A**3)) + (27*(self.B**2))
         if delta % self.modulo == 0:
             return False
         return True
@@ -29,7 +29,7 @@ def generate(p):
     while(not isCorrect):
         a = randint(1,10)
         b = randint(1,10)
-        delta = (4*(a^3)) + (27*(b^2))
+        delta = (4*(a**3)) + (27*(b**2))
         print("delta= ", delta)
         if (delta % p !=0):
             print("Correct curve found")

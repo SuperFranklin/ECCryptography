@@ -1,8 +1,8 @@
 import random
-from random import randint
 
 from Point import Point
-from Curve import generate
+from Curve import generate, Curve
+from PointCalculator import addPoints, modinv
 
 #is prime test
 def miller_rabin(n, k):
@@ -29,11 +29,19 @@ def miller_rabin(n, k):
             return False
     return True
 
+def isOnCurve():
+    L = pow(y, 2, curve.modulo) % curve.modulo
+    P = ((pow(x, 3, curve.modulo) % curve.modulo) + ((curve.A * x) % curve.modulo)) + (
+            curve.B % curve.modulo) % curve.modulo
+    if(L % curve.modulo == P % curve.modulo):
+        return True
+    return False
+
 def generatePrimeNumber():
     isPrime = False
     while(not isPrime):
         k = random.getrandbits(254)
-        p = ( 4*k )+ 3
+        p = ( 4*k ) + 3
         isPrime = miller_rabin(p,128)
 
     return p
@@ -53,6 +61,8 @@ curve = generate(prime)
 print("Curve: ", curve)
 print("generating point...")
 correctPoint = False
+
+
 while (not correctPoint):
     x = random.randrange(1,prime)
     f = curve.calculate(x)
@@ -63,3 +73,8 @@ while (not correctPoint):
         point = Point(x,y)
         print("Point: x=",x ,", y=", y)
         correctPoint = True
+        print("Is on curve: ", )
+        result = addPoints(curve, point, point)
+        print("result: ", result)
+        print("us ok", isOnCurve())
+
