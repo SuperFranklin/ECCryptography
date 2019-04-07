@@ -1,5 +1,7 @@
 import random
 from random import randint
+
+from Point import Point
 from Curve import generate
 
 #is prime test
@@ -40,7 +42,7 @@ def testEuler(y, p, modulo):
     fp = pow(y,((p-1)//2), modulo)
     if(fp == 1):
         return True
-    print("y= ",y , "is not a square modulo rest")
+    print("y= ",y , "is not correct")
     return False
 
 print("generating prime number...")
@@ -58,5 +60,6 @@ while (not correctPoint):
     if(test):
         p = (prime +1) / 4
         y = pow(f, ((prime+1)//4), curve.modulo)
+        point = Point(x,y)
         print("Point: x=",x ,", y=", y)
         correctPoint = True
