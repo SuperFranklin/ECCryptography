@@ -3,12 +3,17 @@ class Point:
     y = 0.0
     infinity = False
 
-    def __init__(self, x, y):
+    def __init__(self, x=0.0, y=0.0, infiniy=False):
         self.x = x
         self.y = y
+        self.infinity = infiniy
 
-    def __init(self, infinity):
-        infinity = True
+
+    def generateInfinity():
+        p = Point()
+        p.infinity = True
+        return p
+
 
 
     def __str__(self):

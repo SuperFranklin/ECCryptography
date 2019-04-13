@@ -16,16 +16,16 @@ def addPoints(c, p1, p2):
         return Point(x, y)
 
     if p1.x == p2.x and p1.y != p2.y:
-        return Point(True)
+        return Point.generateInfinity()
 
     if p1 == p2 and p1.y !=0:
-        m = (((3*p1.x) + c.A) * modinv(2 * p1.y, c.modulo)) % c.modulo
+        m = (((3*pow(p1.x, 2 , c.modulo)) + c.A) * modinv(2 * p1.y, c.modulo)) % c.modulo
         x = (pow(m, 2, c.modulo) - 2*p1.x) % c.modulo
-        y = (m*(p1.x - x) * modinv(2*p1.y, c.modulo)) % c.modulo
+        y = (m*(p1.x - x) - p1.y) % c.modulo
         return Point(x,y)
 
     if p1 == p2 and p1.y ==0:
-        return Point(True)
+        return Point.generateInfinity()
 
 def extended_gcd(aa, bb):
     lastremainder, remainder = abs(aa), abs(bb)
