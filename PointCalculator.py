@@ -1,3 +1,5 @@
+from vboxapi import xrange
+
 from Point import Point
 
 
@@ -27,6 +29,15 @@ def addPoints(c, p1, p2):
     if p1 == p2 and p1.y ==0:
         return Point.generateInfinity()
 
+
+def multiplyPoint(curve, point, n):
+    result = point
+    for i in xrange(n-1):
+        result = addPoints(curve, result, point)
+        print((i/n)*100, "% completed")
+    return result
+
+
 def extended_gcd(aa, bb):
     lastremainder, remainder = abs(aa), abs(bb)
     x, lastx, y, lasty = 0, 1, 1, 0
@@ -35,6 +46,7 @@ def extended_gcd(aa, bb):
         x, lastx = lastx - quotient*x, x
         y, lasty = lasty - quotient*y, y
     return lastremainder, lastx * (-1 if aa < 0 else 1)
+
 
 def modinv(a, m):
     g, x = extended_gcd(a, m)
