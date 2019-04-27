@@ -30,11 +30,7 @@ def generate(p):
         a = randint(1,10)
         b = randint(1,10)
         delta = (4*(a**3)) + (27*(b**2))
-        print("delta= ", delta)
         if (delta % p !=0):
-            print("Correct curve found")
             isCorrect = True
-        else:
-            print("Incorrect curve")
     return Curve(a,b,p)
 

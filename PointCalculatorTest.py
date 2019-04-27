@@ -16,8 +16,6 @@ def isOnCurve(curve, x, y):
 
 class  PointCalculatorTest(unittest.TestCase):
 
-
-
     #p1=p2 and p1.x != 0
     def test_addCaseOne(self):
         c = Curve(9,5,13)

@@ -31,10 +31,10 @@ def miller_rabin(n, k):
 
 
 
-def generatePrimeNumber():
+def generatePrimeNumber(numOfBits):
     isPrime = False
     while(not isPrime):
-        k = random.getrandbits(254)
+        k = random.getrandbits(numOfBits)
         p = ( 4*k ) + 3
         isPrime = miller_rabin(p,128)
 
@@ -44,7 +44,6 @@ def testEuler(y, p, modulo):
     fp = pow(y,((p-1)//2), modulo)
     if(fp == 1):
         return True
-    print("y= ",y , "is not correct")
     return False
 
 
@@ -52,8 +51,8 @@ def isOnCurve(curve, x, y):
     L = pow(y, 2, curve.modulo) % curve.modulo
     P = ((pow(x, 3, curve.modulo) % curve.modulo) + ((curve.A * x) % curve.modulo)) + (
             curve.B % curve.modulo) % curve.modulo
-    print("L: ",L % curve.modulo)
-    print("P: ",P % curve.modulo)
+    #print("L: ",L % curve.modulo)
+    #print("P: ",P % curve.modulo)
     if(L % curve.modulo == P % curve.modulo):
         return True
     return False
