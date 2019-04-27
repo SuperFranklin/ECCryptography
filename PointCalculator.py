@@ -29,6 +29,17 @@ def addPoints(c, p1, p2):
     if p1 == p2 and p1.y ==0:
         return Point.generateInfinity()
 
+def mul(curve,Q,m):
+    R=Point.generateInfinity()
+    while m!=0:
+        if m&1: # bit is set
+            R=addPoints(curve,R,Q)
+        m=m>>1
+        if (m!=0):
+            Q=addPoints(curve,Q,Q)
+
+    return R
+
 
 def multiplyPoint(curve, point, n):
     result = point
