@@ -2,8 +2,10 @@ import random
 
 from Point import Point
 from Curve import generate
-from PointCalculator import addPoints, multiplyPoint
-from Utils import generatePrimeNumber, testEuler
+from PointCalculator import addPoints, multiplyPoint, mul
+from Utils import generatePrimeNumber, testEuler,isOnCurve
+
+
 
 print("generating prime number...")
 prime = generatePrimeNumber()
@@ -28,6 +30,7 @@ while (not correctPoint):
 
 
         result = addPoints(curve, point, point)
-        r2 = multiplyPoint(curve, point, 10)
+        r2 = mul(curve, point, 83218327)
+        isOnCurve(curve, r2.x, r2.y)
         print("result: ", r2)
 

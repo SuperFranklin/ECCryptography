@@ -29,13 +29,7 @@ def miller_rabin(n, k):
             return False
     return True
 
-def isOnCurve():
-    L = pow(y, 2, curve.modulo) % curve.modulo
-    P = ((pow(x, 3, curve.modulo) % curve.modulo) + ((curve.A * x) % curve.modulo)) + (
-            curve.B % curve.modulo) % curve.modulo
-    if(L % curve.modulo == P % curve.modulo):
-        return True
-    return False
+
 
 def generatePrimeNumber():
     isPrime = False
@@ -51,4 +45,15 @@ def testEuler(y, p, modulo):
     if(fp == 1):
         return True
     print("y= ",y , "is not correct")
+    return False
+
+
+def isOnCurve(curve, x, y):
+    L = pow(y, 2, curve.modulo) % curve.modulo
+    P = ((pow(x, 3, curve.modulo) % curve.modulo) + ((curve.A * x) % curve.modulo)) + (
+            curve.B % curve.modulo) % curve.modulo
+    print("L: ",L % curve.modulo)
+    print("P: ",P % curve.modulo)
+    if(L % curve.modulo == P % curve.modulo):
+        return True
     return False
